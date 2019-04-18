@@ -25,17 +25,22 @@
 // Like wheel but can control brightness
 void WheelBright(uint8_t ledn, int WheelPos, int brightness) {
 
+  // need separate loop for max brightness?
 
-  if (WheelPos < 1365) {
-    TLC.setLED(ledn, constrain(3 * WheelPos + brightness - 4095, 0, 4095), constrain(brightness - (3 * WheelPos), 0, 4095), 0);
-  }
-  else if (WheelPos < 2731) {
-    WheelPos -= 1365;
-    TLC.setLED(ledn, constrain(brightness - (3 * WheelPos), 0, 4095), 0, constrain(3 * WheelPos + brightness - 4095, 0, 4095));
-  }
-  else {
-    WheelPos -= 2731;
-    TLC.setLED(ledn, 0, constrain(3 * WheelPos + brightness - 4095, 0, 4095), constrain(brightness - (3 * WheelPos), 0, 4095));
+  if (brightness == 4095) {
+    Wheel(ledn, WheelPos); // use the other function
+  } else {  // numbers based off max 3072
+    if (WheelPos < 1024) {
+      TLC.setLED(ledn, constrain(3 * WheelPos + brightness - 4095, 0, 4095), constrain(brightness - (3 * WheelPos), 0, 4095), 0);
+    }
+    else if (WheelPos < 2048) {
+      WheelPos -= 1024;
+      TLC.setLED(ledn, constrain(brightness - (3 * WheelPos), 0, 4095), 0, constrain(3 * WheelPos + brightness - 4095, 0, 4095));
+    }
+    else {
+      WheelPos -= 2048;
+      TLC.setLED(ledn, 0, constrain(3 * WheelPos + brightness - 4095, 0, 4095), constrain(brightness - (3 * WheelPos), 0, 4095));
+    }
   }
 }
 
@@ -138,7 +143,7 @@ void driftColor(byte colorIndex, int drift) {
 
 void fadeDots(int _drift) {
   for (byte j = 0; j < 2; j++) {
-    
+
     byte i = theDots[j]; // gets spareLED location from defined array
 
     colorVal[i] += random(-1 * _drift, _drift);
