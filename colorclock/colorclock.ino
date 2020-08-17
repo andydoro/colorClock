@@ -44,6 +44,10 @@ const boolean DISPLAY_24HOURTIME = true; // display 24 hour time?
 RTC_DS1307 RTC; // clock object
 DST_RTC DST;
 
+// Define US or EU rules for DST comment out as required. More countries could be added with different rules in DST_RTC.cpp
+const char rulesDST[] = "US"; // US DST rules
+// const char rulesDST[] = "EU";   // EU DST rules
+
 DateTime theTime;
 
 byte clockDigits[4];
