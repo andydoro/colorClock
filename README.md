@@ -7,7 +7,7 @@ Thanks to Dano for help with enclosure and lasercutting!
 
 https://andydoro.com/colorclock/
  
-Hardware:
+Hardware
 -------
 * [Metro Mini](https://www.adafruit.com/product/2590)
 * [DS1307 RTC breakout](https://www.adafruit.com/products/3296)
@@ -17,7 +17,7 @@ Hardware:
 * custom PCB
 * laser-cut enclosure
 
-Software:
+Software
 -------
  
 This code requires the following libraries:
