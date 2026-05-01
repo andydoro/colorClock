@@ -42,7 +42,7 @@ const boolean DISPLAY_24HOURTIME = true; // display 24 hour time?
 #define SECONDS_PER_HOUR 3600
 
 RTC_DS1307 RTC; // clock object
-DST_RTC DST;
+DST_RTC DST(0); // DST object - 0 indicates US DST ruleset
 
 // Define US or EU rules for DST comment out as required. More countries could be added with different rules in DST_RTC.cpp
 const char rulesDST[] = "US"; // US DST rules
